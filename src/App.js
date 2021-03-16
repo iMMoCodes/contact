@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import logo from './assets/images/logo.svg'
 import './App.css'
 import routes from './routes'
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
 	return (

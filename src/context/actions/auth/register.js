@@ -16,7 +16,7 @@ export const register = ({ email, password, username, firstName: first_name, las
 		.catch((err) => {
 			dispatch({
 				type: REGISTER_ERROR,
-				payload: err.response.data,
+				payload: err.response ? err.response.data : 'COULD NOT CONNECT',
 			})
 		})
 }

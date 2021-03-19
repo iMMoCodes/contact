@@ -13,35 +13,23 @@ const RegisterUI = ({ form: { onChange, form, registerFormValid, onSubmit, loadi
 						<Form>
 							<Form.Field>
 								<Form.Input
-									value={
-										form.username ||
-										''
-									}
-									onChange={
-										onChange
-									}
+									value={form.username || ''}
+									onChange={onChange}
 									name='username'
 									placeholder='Username'
 									label='Username'
 									error={
 										fieldErrors.username && {
-											content:
-												fieldErrors.username,
-											pointing:
-												'below',
+											content: fieldErrors.username,
+											pointing: 'below',
 										}
 									}
 								/>
 							</Form.Field>
 							<Form.Field>
 								<Form.Input
-									value={
-										form.firstName ||
-										''
-									}
-									onChange={
-										onChange
-									}
+									value={form.firstName || ''}
+									onChange={onChange}
 									name='firstName'
 									placeholder='First Name'
 									label='First Name'
@@ -49,21 +37,15 @@ const RegisterUI = ({ form: { onChange, form, registerFormValid, onSubmit, loadi
 										fieldErrors.first_name && {
 											content:
 												fieldErrors.first_name,
-											pointing:
-												'below',
+											pointing: 'below',
 										}
 									}
 								/>
 							</Form.Field>
 							<Form.Field>
 								<Form.Input
-									value={
-										form.lastName ||
-										''
-									}
-									onChange={
-										onChange
-									}
+									value={form.lastName || ''}
+									onChange={onChange}
 									name='lastName'
 									placeholder='Last Name'
 									label='Last Name'
@@ -71,74 +53,52 @@ const RegisterUI = ({ form: { onChange, form, registerFormValid, onSubmit, loadi
 										fieldErrors.last_name && {
 											content:
 												fieldErrors.last_name,
-											pointing:
-												'below',
+											pointing: 'below',
 										}
 									}
 								/>
 							</Form.Field>
 							<Form.Field>
 								<Form.Input
-									value={
-										form.email ||
-										''
-									}
-									onChange={
-										onChange
-									}
+									value={form.email || ''}
+									onChange={onChange}
 									name='email'
 									type='email'
 									placeholder='Email'
 									label='Email'
 									error={
 										fieldErrors.email && {
-											content:
-												fieldErrors.email,
-											pointing:
-												'below',
+											content: fieldErrors.email,
+											pointing: 'below',
 										}
 									}
 								/>
 							</Form.Field>
 							<Form.Field>
 								<Form.Input
-									value={
-										form.password ||
-										''
-									}
-									onChange={
-										onChange
-									}
+									value={form.password || ''}
+									onChange={onChange}
 									name='password'
 									type='password'
 									placeholder='Password'
 									label='Password'
 									error={
 										fieldErrors.password && {
-											content:
-												fieldErrors.password,
-											pointing:
-												'below',
+											content: fieldErrors.password,
+											pointing: 'below',
 										}
 									}
 								/>
 							</Form.Field>
 							<Button
-								onClick={
-									onSubmit
-								}
-								disabled={
-									registerFormValid ||
-									loading
-								}
-								loading={
-									loading
-								}
+								onClick={onSubmit}
+								disabled={registerFormValid || loading}
+								loading={loading}
 								primary
 								fluid
 								type='submit'
 							>
-								Submit
+								Register user
 							</Button>
 						</Form>
 					</Segment>

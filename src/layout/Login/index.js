@@ -32,7 +32,7 @@ const LoginUI = ({ form: { onChange, form, loginFormValid, error, onSubmit, load
 								/>
 							</Form.Field>
 							<Button onClick={onSubmit} disabled={loginFormValid || loading} loading={loading} primary fluid type='submit'>
-								Submit
+								Login
 							</Button>
 						</Form>
 					</Segment>

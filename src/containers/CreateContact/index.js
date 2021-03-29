@@ -25,6 +25,8 @@ const CreateContactContainer = () => {
 		}
 	}, [data])
 
+	const formIsHalfFilled = Object.values(form).filter((item) => item && item !== '')?.length > 0 && !data
+
 	console.log(`loading`, loading)
 
 	const onChange = (e, { name, value }) => {
@@ -38,7 +40,7 @@ const CreateContactContainer = () => {
 
 	const formInvalid = !form.firstName?.length || !form.lastName?.length || !form.countryCode?.length || !form?.phoneNumber.length
 
-	return <CreateContact formInvalid={formInvalid} onSubmit={onSubmit} onChange={onChange} form={form} loading={loading} />
+	return <CreateContact formIsHalfFilled={formIsHalfFilled} formInvalid={formInvalid} onSubmit={onSubmit} onChange={onChange} form={form} loading={loading} />
 }
 
 export default CreateContactContainer

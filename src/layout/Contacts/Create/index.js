@@ -1,12 +1,14 @@
 import React from 'react'
+import { Prompt } from 'react-router'
 import { Button, Card, Form, Grid, Header as SemanticHeader, Select } from 'semantic-ui-react'
 import Header from '../../../components/Header'
 import countries from '../../../utils/countries'
 import './index.css'
 
-const CreateContact = ({ onChange, onSubmit, loading, formInvalid }) => {
+const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInvalid }) => {
 	return (
 		<div>
+			<Prompt when={formIsHalfFilled} message='You have unsaved changes, still want to leave?' />
 			<Header />
 			<Grid centered>
 				<Grid.Column className='form-column'>

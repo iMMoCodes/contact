@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button, Card, Form, Grid, Header as SemanticHeader } from 'semantic-ui-react'
+import { Button, Card, Form, Grid, Header as SemanticHeader, Select } from 'semantic-ui-react'
 import Header from '../../../components/Header'
+import countries from '../../../utils/countries'
 import './index.css'
 
 const CreateContact = ({ onChange }) => {
@@ -35,6 +36,8 @@ const CreateContact = ({ onChange }) => {
 										label='Country'
 										name='countryCode'
 										onChange={onChange}
+										control={Select}
+										options={countries}
 										placeholder='Country'
 									/>
 									<Form.Input

@@ -4,7 +4,7 @@ import Header from '../../../components/Header'
 import countries from '../../../utils/countries'
 import './index.css'
 
-const CreateContact = ({ onChange }) => {
+const CreateContact = ({ onChange, onSubmit, loading, formInvalid }) => {
 	return (
 		<div>
 			<Header />
@@ -57,7 +57,13 @@ const CreateContact = ({ onChange }) => {
 										})
 									}}
 								/>
-								<Button primary type='submit'>
+								<Button
+									disabled={formInvalid || loading}
+									onClick={onSubmit}
+									primary
+									type='submit'
+									loading={loading}
+								>
 									Submit
 								</Button>
 							</Form>

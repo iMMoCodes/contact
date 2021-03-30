@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Prompt } from 'react-router'
-import { Button, Card, Form, Grid, Header as SemanticHeader, Select } from 'semantic-ui-react'
+import { Button, Card, Form, Grid, Header as SemanticHeader, Icon, Image, Select } from 'semantic-ui-react'
 import Header from '../../../components/Header'
 import countries from '../../../utils/countries'
 import './index.css'
 
-const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInvalid }) => {
+const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInvalid, onImageChange, tempFile }) => {
+	const imagePickRef = useRef(null)
+
+	const chooseImage = () => {
+		if (imagePickRef.current) {
+			imagePickRef.current.click()
+		}
+	}
+
 	return (
 		<div>
 			<Prompt
@@ -22,9 +30,14 @@ const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInva
 					<Card fluid>
 						<Card.Content>
 							<Form unstackable>
-								<div className='contact-picture'>
-									<span>Choose a picture</span>
-								</div>
+								<input onChange={onImageChange} ref={imagePickRef} type='file' hidden />
+								{tempFile && <Image className='contact-picture' src={tempFile} />}
+								{!tempFile && (
+									<div onClick={chooseImage} className='contact-picture'>
+										<span>Choose a picture</span>
+									</div>
+								)}
+								<Icon name='pencil' onClick={chooseImage} />
 								<Form.Group widths={2}>
 									<Form.Input
 										label='First name'

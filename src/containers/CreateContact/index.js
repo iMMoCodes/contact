@@ -7,6 +7,8 @@ import clearCreateContact from '../../context/actions/contacts/clearCreateContac
 
 const CreateContactContainer = () => {
 	const [form, setForm] = useState({})
+	const [tempFile, setTempFile] = useState(null)
+
 	const history = useHistory()
 
 	const {
@@ -15,6 +17,16 @@ const CreateContactContainer = () => {
 			addContact: { loading, error, data },
 		},
 	} = useContext(GlobalContext)
+
+	const onImageChange = (e) => {
+		e.persist()
+		const fileURL = e.target.files[0]
+		setForm({ ...form, contactPicture: URL })
+
+		if (fileURL) {
+			setTempFile(URL.createObjectURL(fileURL))
+		}
+	}
 
 	useEffect(() => {
 		if (data) {
@@ -40,7 +52,7 @@ const CreateContactContainer = () => {
 
 	const formInvalid = !form.firstName?.length || !form.lastName?.length || !form.countryCode?.length || !form?.phoneNumber.length
 
-	return <CreateContact formIsHalfFilled={formIsHalfFilled} formInvalid={formInvalid} onSubmit={onSubmit} onChange={onChange} form={form} loading={loading} />
+	return <CreateContact formIsHalfFilled={formIsHalfFilled} formInvalid={formInvalid} onSubmit={onSubmit} onChange={onChange} form={form} loading={loading} onImageChange={onImageChange} tempFile={tempFile} />
 }
 
 export default CreateContactContainer

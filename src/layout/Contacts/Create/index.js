@@ -8,7 +8,13 @@ import './index.css'
 const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInvalid }) => {
 	return (
 		<div>
-			<Prompt when={formIsHalfFilled} message='You have unsaved changes, still want to leave?' />
+			<Prompt
+				when={formIsHalfFilled}
+				message={JSON.stringify({
+					header: 'Confirm Your Changes',
+					content: 'You have unsaved changes, still want to leave?',
+				})}
+			/>
 			<Header />
 			<Grid centered>
 				<Grid.Column className='form-column'>

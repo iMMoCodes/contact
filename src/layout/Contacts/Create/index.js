@@ -20,7 +20,8 @@ const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInva
 				when={formIsHalfFilled}
 				message={JSON.stringify({
 					header: 'Confirm Your Changes',
-					content: 'You have unsaved changes, still want to leave?',
+					content:
+						'You have unsaved changes, still want to leave?',
 				})}
 			/>
 			<Header />
@@ -29,61 +30,130 @@ const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInva
 					<SemanticHeader>Create Contact</SemanticHeader>
 					<Card fluid>
 						<Card.Content>
-							<Form unstackable>
-								<input onChange={onImageChange} ref={imagePickRef} type='file' hidden />
-								{tempFile && <Image className='contact-picture' src={tempFile} />}
-								{!tempFile && (
-									<div onClick={chooseImage} className='contact-picture'>
-										<span>Choose a picture</span>
-									</div>
-								)}
-								<Icon name='pencil' onClick={chooseImage} />
-								<Form.Group widths={2}>
+							<Form
+								unstackable
+							>
+								<input
+									onChange={
+										onImageChange
+									}
+									ref={
+										imagePickRef
+									}
+									type='file'
+									hidden
+								/>
+								<div className='image-wrapper'>
+									{tempFile && (
+										<Image
+											className='contact-picture'
+											src={
+												tempFile
+											}
+										/>
+									)}
+									{!tempFile && (
+										<div
+											onClick={
+												chooseImage
+											}
+											className='contact-picture'
+										>
+											<span>
+												Choose
+												a
+												picture
+											</span>
+										</div>
+									)}
+									<Icon
+										name='pencil'
+										onClick={
+											chooseImage
+										}
+									/>
+								</div>
+								<Form.Group
+									widths={
+										2
+									}
+								>
 									<Form.Input
 										label='First name'
 										name='firstName'
-										onChange={onChange}
+										onChange={
+											onChange
+										}
 										placeholder='First name'
 									/>
 									<Form.Input
 										label='Last name'
 										name='lastName'
-										onChange={onChange}
+										onChange={
+											onChange
+										}
 										placeholder='Last name'
 									/>
 								</Form.Group>
-								<Form.Group widths={2}>
+								<Form.Group
+									widths={
+										2
+									}
+								>
 									<Form.Input
 										label='Country'
 										name='countryCode'
-										onChange={onChange}
-										control={Select}
-										options={countries}
+										onChange={
+											onChange
+										}
+										control={
+											Select
+										}
+										options={
+											countries
+										}
 										placeholder='Country'
 									/>
 									<Form.Input
 										label='Phone number'
 										name='phoneNumber'
-										onChange={onChange}
+										onChange={
+											onChange
+										}
 										placeholder='Phone number'
 									/>
 								</Form.Group>
 								<Form.Checkbox
 									label='Add to favorites'
 									name='isFavorite'
-									onChange={(e, data) => {
-										onChange(e, {
-											name: 'isFavorite',
-											value: data.checked,
-										})
+									onChange={(
+										e,
+										data
+									) => {
+										onChange(
+											e,
+											{
+												name:
+													'isFavorite',
+												value:
+													data.checked,
+											}
+										)
 									}}
 								/>
 								<Button
-									disabled={formInvalid || loading}
-									onClick={onSubmit}
+									disabled={
+										formInvalid ||
+										loading
+									}
+									onClick={
+										onSubmit
+									}
 									primary
 									type='submit'
-									loading={loading}
+									loading={
+										loading
+									}
 								>
 									Submit
 								</Button>

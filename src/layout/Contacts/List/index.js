@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Image, List, Placeholder } from 'semantic-ui-react'
+import { Container, Image, List, Message, Placeholder } from 'semantic-ui-react'
 import Header from '../../../components/Header'
 
 const ContactsListUI = ({
@@ -14,7 +14,9 @@ const ContactsListUI = ({
 				{loading && (
 					<>
 						<Placeholder>
-							<Placeholder.Header image>
+							<Placeholder.Header
+								image
+							>
 								<Placeholder.Line />
 								<Placeholder.Line />
 							</Placeholder.Header>
@@ -28,22 +30,52 @@ const ContactsListUI = ({
 					</>
 				)}
 
+				{!loading && data.length === 0 && (
+					<Message content='No contacts yet.' />
+				)}
+
 				<List>
-					{data.length &&
+					{data.length > 0 &&
 						data.map((contact) => (
-							<List.Item key={contact.id}>
+							<List.Item
+								key={
+									contact.id
+								}
+							>
 								<List.Content floated='right'>
-									<span>{contact.phone_number}</span>
+									<span>
+										{
+											contact.phone_number
+										}
+									</span>
 								</List.Content>
-								<List.Content style={{ display: 'flex', alignItems: 'center' }}>
+								<List.Content
+									style={{
+										display:
+											'flex',
+										alignItems:
+											'center',
+									}}
+								>
 									<Image
 										circular
-										width={50}
-										height={50}
-										src={contact.contact_picture}
+										width={
+											50
+										}
+										height={
+											50
+										}
+										src={
+											contact.contact_picture
+										}
 									/>
 									<span>
-										{contact.first_name} {contact.last_name}
+										{
+											contact.first_name
+										}{' '}
+										{
+											contact.last_name
+										}
 									</span>
 								</List.Content>
 							</List.Item>

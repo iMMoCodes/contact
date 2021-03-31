@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router'
-import Header from '../../components/Header'
 import getContacts from '../../context/actions/contacts/getContacts'
 import { GlobalContext } from '../../context/Provider'
 import ContactsListUI from '../../layout/Contacts/List'
@@ -10,8 +9,14 @@ const ContactsContainer = () => {
 
 	const history = useHistory()
 
+	const {
+		contacts: { data },
+	} = contactsState
+
 	useEffect(() => {
-		getContacts(history)(contactsDispatch)
+		if (data.length === 0) {
+			getContacts(history)(contactsDispatch)
+		}
 	}, [])
 
 	return <ContactsListUI state={contactsState} />

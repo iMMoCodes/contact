@@ -21,7 +21,7 @@ const CreateContactContainer = () => {
 	const onImageChange = (e) => {
 		e.persist()
 		const fileURL = e.target.files[0]
-		setForm({ ...form, contactPicture: URL })
+		setForm({ ...form, contactPicture: fileURL })
 
 		if (fileURL) {
 			setTempFile(URL.createObjectURL(fileURL))
@@ -52,7 +52,18 @@ const CreateContactContainer = () => {
 
 	const formInvalid = !form.firstName?.length || !form.lastName?.length || !form.countryCode?.length || !form?.phoneNumber.length
 
-	return <CreateContact formIsHalfFilled={formIsHalfFilled} formInvalid={formInvalid} onSubmit={onSubmit} onChange={onChange} form={form} loading={loading} onImageChange={onImageChange} tempFile={tempFile} />
+	return (
+		<CreateContact
+			formIsHalfFilled={formIsHalfFilled}
+			formInvalid={formInvalid}
+			onSubmit={onSubmit}
+			onChange={onChange}
+			form={form}
+			loading={loading}
+			onImageChange={onImageChange}
+			tempFile={tempFile}
+		/>
+	)
 }
 
 export default CreateContactContainer

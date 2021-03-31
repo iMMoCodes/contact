@@ -39,18 +39,15 @@ const CreateContactContainer = () => {
 
 	const formIsHalfFilled = Object.values(form).filter((item) => item && item !== '')?.length > 0 && !data
 
-	console.log(`loading`, loading)
-
 	const onChange = (e, { name, value }) => {
 		setForm({ ...form, [name]: value })
 	}
-	console.log(`form`, form)
 
 	const onSubmit = () => {
 		createContact(form)(contactsDispatch)
 	}
 
-	const formInvalid = !form.firstName?.length || !form.lastName?.length || !form.countryCode?.length || !form?.phoneNumber.length
+	const formInvalid = !form.firstName?.length || !form.lastName?.length || !form.countryCode?.length || !form.phoneNumber?.length
 
 	return (
 		<CreateContact

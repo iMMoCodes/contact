@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Image, List, Message, Placeholder } from 'semantic-ui-react'
 import Header from '../../../components/Header'
+import ImageThumb from '../../../components/ImageThumb'
 
 const ContactsListUI = ({
 	state: {
@@ -57,17 +58,21 @@ const ContactsListUI = ({
 											'center',
 									}}
 								>
-									<Image
+									<ImageThumb
 										circular
-										width={
-											50
+										firstName={
+											contact.first_name
 										}
-										height={
-											50
+										lastName={
+											contact.last_name
 										}
 										src={
 											contact.contact_picture
 										}
+										style={{
+											width: 50,
+											height: 50,
+										}}
 									/>
 									<span>
 										{

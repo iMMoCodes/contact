@@ -24,7 +24,13 @@ const Header = () => {
 			</Menu.Item>
 			{pathname === '/' && (
 				<Menu.Item position='right'>
-					<Button as={Link} to='/contacts/create' inverted color='green' icon>
+					<Button
+						as={Link}
+						to='/contacts/create'
+						inverted
+						color='green'
+						icon
+					>
 						<Icon name='address book'></Icon>
 						Create Contact
 					</Button>
@@ -32,7 +38,12 @@ const Header = () => {
 			)}
 			{isAuthenticated() && (
 				<Menu.Item position='right'>
-					<Button onClick={handleUserLogout} color='red' inverted icon>
+					<Button
+						onClick={handleUserLogout}
+						color='red'
+						inverted
+						icon
+					>
 						<Icon name='log out'></Icon>
 						Logout
 					</Button>

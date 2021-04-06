@@ -1,7 +1,8 @@
 import React from 'react'
-import { Container, Image, List, Message, Placeholder } from 'semantic-ui-react'
-import Header from '../../../components/Header'
+import { Container, Header, List, Message, Placeholder } from 'semantic-ui-react'
+import APPHeader from '../../../components/Header'
 import ImageThumb from '../../../components/ImageThumb'
+import Favorites from '../Favorites'
 
 const ContactsListUI = ({
 	state: {
@@ -10,8 +11,18 @@ const ContactsListUI = ({
 }) => {
 	return (
 		<div>
-			<Header />
+			<APPHeader />
 			<Container>
+				<Header>STARRED</Header>
+
+				<Favorites
+					favorites={data.filter(
+						(item) => item.is_favorite
+					)}
+					loading={loading}
+				/>
+
+				<Header>ALL</Header>
 				{loading && (
 					<>
 						<Placeholder>
@@ -30,7 +41,6 @@ const ContactsListUI = ({
 						</Placeholder>
 					</>
 				)}
-
 				{!loading && data.length === 0 && (
 					<Message content='No contacts yet.' />
 				)}

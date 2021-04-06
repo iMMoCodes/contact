@@ -9,6 +9,8 @@ const CreateContactContainer = () => {
 	const [form, setForm] = useState({})
 	const [tempFile, setTempFile] = useState(null)
 
+	console.log(`form`, form)
+
 	const history = useHistory()
 
 	const {

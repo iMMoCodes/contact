@@ -1,47 +1,71 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Icon, Placeholder } from 'semantic-ui-react'
 import ImageThumb from '../../../components/ImageThumb'
+import './style.css'
 
 const Favorites = ({ favorites, loading }) => {
-	console.log(`favorites`, favorites)
+	const listRef = useRef(null)
+
+	const scrollLeft = () => {
+		if (listRef.current) {
+			listRef.current.scrollBy({
+				top: 0,
+				left: -200,
+				behavior: 'smooth',
+			})
+		}
+	}
+
+	const scrollRight = () => {
+		if (listRef.current) {
+			listRef.current.scrollBy({
+				top: 0,
+				left: 200,
+				behavior: 'smooth',
+			})
+		}
+	}
+
 	return (
 		<div className='slider-container'>
-			<Icon name='caret left' size='large' onClick={() => {}}></Icon>
+			<Icon name='caret left' size='huge' onClick={scrollLeft}></Icon>
 			{favorites.length > 0 && (
-				<div className='items-container'>
-					{Array.isArray(favorites) &&
-						favorites.map((item) => {
-							return (
-								<div
-									key={
-										item.id
-									}
-								>
-									<ImageThumb
-										firstName={
-											item.first_name
-										}
-										lastName={
-											item.last_name
-										}
-										src={
-											item.contact_picture
-										}
-									/>
-									<p className='name'>
-										{
-											item.first_name
-										}
-										{
-											item.last_name
-										}
-									</p>
-								</div>
-							)
-						})}
+				<div className='items-container' ref={listRef}>
+					{favorites.map((item) => (
+						<div
+							key={
+								item.id
+							}
+							className='single-item-container'
+						>
+							<ImageThumb
+								firstName={
+									item.first_name
+								}
+								lastName={
+									item.last_name
+								}
+								src={
+									item.contact_picture
+								}
+								style={{
+									width: 70,
+									height: 70,
+								}}
+							/>
+							<p className='name'>
+								{
+									item.first_name
+								}
+								{
+									item.last_name
+								}
+							</p>
+						</div>
+					))}
 				</div>
 			)}
-			<Icon name='caret right' size='large' onClick={() => {}}></Icon>
+			<Icon name='caret right' size='huge' onClick={scrollRight}></Icon>
 
 			{loading && (
 				<>

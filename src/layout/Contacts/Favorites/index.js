@@ -6,11 +6,13 @@ import './style.css'
 const Favorites = ({ favorites, loading }) => {
 	const listRef = useRef(null)
 
+	const showIcons = favorites.length > 2
+
 	const scrollLeft = () => {
 		if (listRef.current) {
 			listRef.current.scrollBy({
 				top: 0,
-				left: -200,
+				left: -500,
 				behavior: 'smooth',
 			})
 		}
@@ -20,7 +22,7 @@ const Favorites = ({ favorites, loading }) => {
 		if (listRef.current) {
 			listRef.current.scrollBy({
 				top: 0,
-				left: 200,
+				left: 500,
 				behavior: 'smooth',
 			})
 		}
@@ -28,7 +30,14 @@ const Favorites = ({ favorites, loading }) => {
 
 	return (
 		<div className='slider-container'>
-			<Icon name='caret left' size='huge' onClick={scrollLeft}></Icon>
+			{showIcons && (
+				<Icon
+					className='icon-class'
+					name='caret left'
+					size='huge'
+					onClick={scrollLeft}
+				></Icon>
+			)}
 			{favorites.length > 0 && (
 				<div className='items-container' ref={listRef}>
 					{favorites.map((item) => (
@@ -65,7 +74,14 @@ const Favorites = ({ favorites, loading }) => {
 					))}
 				</div>
 			)}
-			<Icon name='caret right' size='huge' onClick={scrollRight}></Icon>
+			{showIcons && (
+				<Icon
+					className='icon-class'
+					name='caret right'
+					size='huge'
+					onClick={scrollRight}
+				></Icon>
+			)}
 
 			{loading && (
 				<>

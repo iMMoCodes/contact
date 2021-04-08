@@ -2,6 +2,7 @@ import {
 	ADD_CONTACT_ERROR,
 	ADD_CONTACT_LOAD,
 	ADD_CONTACT_SUCCESS,
+	ADD_REMOVE_STAR_SUCCESS,
 	CLEAR_ADDED_CONTACT,
 	CONTACTS_LOADING,
 	CONTACTS_LOAD_ERROR,
@@ -158,6 +159,21 @@ const contacts = (state, { payload, type }) => {
 						} catch (error) {
 							return []
 						}
+					}),
+				},
+			}
+		}
+
+		case ADD_REMOVE_STAR_SUCCESS: {
+			return {
+				...state,
+				contacts: {
+					...state.contacts,
+					data: state.contacts.data.map((item) => {
+						if (item.id === payload.id) {
+							return payload
+						}
+						return item
 					}),
 				},
 			}

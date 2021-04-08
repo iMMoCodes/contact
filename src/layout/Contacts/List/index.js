@@ -6,6 +6,7 @@ import Favorites from '../Favorites'
 
 const ContactsListUI = ({
 	deleteContact,
+	starUnstarContact,
 	state: {
 		contacts: { loading, isSearchActive, foundContacts, data },
 	},
@@ -46,6 +47,9 @@ const ContactsListUI = ({
 								<List.Content floated='right'>
 									<span>
 										{
+											contact.country_code
+										}{' '}
+										{
 											contact.phone_number
 										}
 									</span>
@@ -59,6 +63,18 @@ const ContactsListUI = ({
 										}}
 									>
 										<Icon name='delete' />
+									</Button>
+									<Button
+										onClick={() => {
+											starUnstarContact(
+												contact.id,
+												contact.is_favorite
+											)
+										}}
+									>
+										{contact.is_favorite
+											? 'UNSTAR'
+											: 'STAR'}
 									</Button>
 								</List.Content>
 								<List.Content
@@ -91,7 +107,13 @@ const ContactsListUI = ({
 										}{' '}
 										{
 											contact.last_name
-										}
+										}{' '}
+										{contact.is_favorite && (
+											<Icon
+												name='star'
+												color='yellow'
+											/>
+										)}
 									</span>
 								</List.Content>
 							</List.Item>

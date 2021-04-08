@@ -1,10 +1,11 @@
 import React from 'react'
-import { Container, Header, List, Message, Placeholder } from 'semantic-ui-react'
+import { Button, Container, Header, Icon, List, Message, Placeholder } from 'semantic-ui-react'
 import APPHeader from '../../../components/Header'
 import ImageThumb from '../../../components/ImageThumb'
 import Favorites from '../Favorites'
 
 const ContactsListUI = ({
+	deleteContact,
 	state: {
 		contacts: { loading, isSearchActive, foundContacts, data },
 	},
@@ -48,6 +49,17 @@ const ContactsListUI = ({
 											contact.phone_number
 										}
 									</span>
+									<Button
+										color='red'
+										size='tiny'
+										onClick={() => {
+											deleteContact(
+												contact.id
+											)
+										}}
+									>
+										<Icon name='delete' />
+									</Button>
 								</List.Content>
 								<List.Content
 									style={{

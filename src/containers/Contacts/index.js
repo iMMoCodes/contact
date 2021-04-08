@@ -13,13 +13,17 @@ const ContactsContainer = () => {
 		contacts: { data },
 	} = contactsState
 
+	const deleteContact = (id) => {
+		console.log(`id`, id)
+	}
+
 	useEffect(() => {
 		if (data.length === 0) {
 			getContacts(history)(contactsDispatch)
 		}
 	}, [])
 
-	return <ContactsListUI state={contactsState} />
+	return <ContactsListUI state={contactsState} deleteContact={deleteContact} />
 }
 
 export default ContactsContainer

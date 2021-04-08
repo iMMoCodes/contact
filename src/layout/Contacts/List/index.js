@@ -42,7 +42,7 @@ const ContactsListUI = ({
 				<List>
 					{currentContacts.length > 0 &&
 						currentContacts.map((contact) => (
-							<List.Item key={contact.id}>
+							<List.Item key={contact.id} disabled={contact.deleting}>
 								<List.Content floated='right'>
 									<span>
 										{

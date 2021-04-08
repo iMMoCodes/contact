@@ -6,6 +6,8 @@ import {
 	CONTACTS_LOADING,
 	CONTACTS_LOAD_ERROR,
 	CONTACTS_LOAD_SUCCESS,
+	DELETE_CONTACT_LOADING,
+	DELETE_CONTACT_SUCCESS,
 	LOGOUT_USER,
 	SEARCH_CONTACTS,
 } from '../../constants/actionTypes'
@@ -97,6 +99,33 @@ const contacts = (state, { payload, type }) => {
 					...state.contacts,
 					loading: false,
 					data: [payload, ...state.contacts.data],
+				},
+			}
+		}
+
+		case DELETE_CONTACT_LOADING: {
+			return {
+				...state,
+				contacts: {
+					...state.contacts,
+					loading: false,
+					data: state.contacts.data.map((item) => {
+						if (item.id === payload) {
+							return { ...item, deleting: true }
+						}
+						return item
+					}),
+				},
+			}
+		}
+
+		case DELETE_CONTACT_SUCCESS: {
+			return {
+				...state,
+				contacts: {
+					...state.contacts,
+					loading: false,
+					data: state.contacts.data.filter((item) => item.id !== payload),
 				},
 			}
 		}

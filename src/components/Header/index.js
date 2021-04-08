@@ -30,9 +30,11 @@ const Header = () => {
 				iMMoContacts
 			</Menu.Item>
 
-			<Menu.Item>
-				<Input placeholder='Search Contacts' onChange={onChange} />
-			</Menu.Item>
+			{pathname === '/' && (
+				<Menu.Item position='right'>
+					<Input style={{ width: 450 }} placeholder='Search Contacts' onChange={onChange} />
+				</Menu.Item>
+			)}
 
 			{pathname === '/' && (
 				<Menu.Item position='right'>
@@ -42,6 +44,7 @@ const Header = () => {
 					</Button>
 				</Menu.Item>
 			)}
+
 			{isAuthenticated() && (
 				<Menu.Item position='right'>
 					<Button onClick={handleUserLogout} color='red' inverted icon>

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Icon, Placeholder } from 'semantic-ui-react'
+import { Icon, Message, Placeholder } from 'semantic-ui-react'
 import ImageThumb from '../../../components/ImageThumb'
 import './style.css'
 
@@ -29,71 +29,51 @@ const Favorites = ({ favorites, loading }) => {
 	}
 
 	return (
-		<div className='slider-container'>
-			{showIcons && (
-				<Icon
-					className='icon-class'
-					name='caret left'
-					size='huge'
-					onClick={scrollLeft}
-				></Icon>
-			)}
-			{favorites.length > 0 && (
-				<div className='items-container' ref={listRef}>
-					{favorites.map((item) => (
-						<div
-							key={
-								item.id
-							}
-							className='single-item-container'
-						>
-							<ImageThumb
-								firstName={
-									item.first_name
-								}
-								lastName={
-									item.last_name
-								}
-								src={
-									item.contact_picture
-								}
-								style={{
-									width: 70,
-									height: 70,
-								}}
-							/>
-							<p className='name'>
-								{
-									item.first_name
-								}
-								{
-									item.last_name
-								}
-							</p>
-						</div>
-					))}
-				</div>
-			)}
-			{showIcons && (
-				<Icon
-					className='icon-class'
-					name='caret right'
-					size='huge'
-					onClick={scrollRight}
-				></Icon>
-			)}
+		<>
+			{!loading && favorites.length === 0 && <Message content='No contacts found.' />}
+			<div className='slider-container'>
+				{showIcons && <Icon className='icon-class' name='caret left' size='huge' onClick={scrollLeft}></Icon>}
+				{favorites.length > 0 && (
+					<div className='items-container' ref={listRef}>
+						{favorites.map((item) => (
+							<div key={item.id} className='single-item-container'>
+								<ImageThumb
+									firstName={
+										item.first_name
+									}
+									lastName={
+										item.last_name
+									}
+									src={
+										item.contact_picture
+									}
+									style={{
+										width: 70,
+										height: 70,
+									}}
+								/>
+								<p className='name'>
+									{item.first_name}
+									{item.last_name}
+								</p>
+							</div>
+						))}
+					</div>
+				)}
+				{showIcons && <Icon className='icon-class' name='caret right' size='huge' onClick={scrollRight}></Icon>}
 
-			{loading && (
-				<>
-					<Placeholder>
-						<Placeholder.Header image>
-							<Placeholder.Line />
-							<Placeholder.Line />
-						</Placeholder.Header>
-					</Placeholder>
-				</>
-			)}
-		</div>
+				{loading && (
+					<>
+						<Placeholder>
+							<Placeholder.Header image>
+								<Placeholder.Line />
+								<Placeholder.Line />
+							</Placeholder.Header>
+						</Placeholder>
+					</>
+				)}
+			</div>
+		</>
 	)
 }
 

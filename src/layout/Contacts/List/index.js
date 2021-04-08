@@ -36,7 +36,7 @@ const ContactsListUI = ({
 						</Placeholder>
 					</>
 				)}
-				{!loading && data.length === 0 && <Message content='No contacts yet.' />}
+				{!loading && currentContacts.length === 0 && <Message content='No contacts found.' />}
 
 				<List>
 					{currentContacts.length > 0 &&

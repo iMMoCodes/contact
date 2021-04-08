@@ -6,29 +6,24 @@ import Favorites from '../Favorites'
 
 const ContactsListUI = ({
 	state: {
-		contacts: { loading, error, data },
+		contacts: { loading, isSearchActive, foundContacts, data },
 	},
 }) => {
+	const currentContacts = isSearchActive ? foundContacts : data
+
 	return (
 		<div>
 			<APPHeader />
 			<Container>
 				<Header>STARRED</Header>
 
-				<Favorites
-					favorites={data.filter(
-						(item) => item.is_favorite
-					)}
-					loading={loading}
-				/>
+				<Favorites favorites={currentContacts.filter((item) => item.is_favorite)} loading={loading} />
 
 				<Header>ALL</Header>
 				{loading && (
 					<>
 						<Placeholder>
-							<Placeholder.Header
-								image
-							>
+							<Placeholder.Header image>
 								<Placeholder.Line />
 								<Placeholder.Line />
 							</Placeholder.Header>
@@ -41,18 +36,12 @@ const ContactsListUI = ({
 						</Placeholder>
 					</>
 				)}
-				{!loading && data.length === 0 && (
-					<Message content='No contacts yet.' />
-				)}
+				{!loading && data.length === 0 && <Message content='No contacts yet.' />}
 
 				<List>
-					{data.length > 0 &&
-						data.map((contact) => (
-							<List.Item
-								key={
-									contact.id
-								}
-							>
+					{currentContacts.length > 0 &&
+						currentContacts.map((contact) => (
+							<List.Item key={contact.id}>
 								<List.Content floated='right'>
 									<span>
 										{

@@ -1,16 +1,16 @@
 .slider-container {
 	display: flex;
 	align-items: center;
-	max-width: 57rem;
 	overflow-y: auto;
 	margin: auto;
+	max-width: 50rem;
 }
 
 .items-container {
 	display: flex;
 	overflow-y: hidden;
 	justify-content: center;
-	margin: 0px 4px 15px;
+	padding: 10px;
 }
 
 .items-container::-webkit-scrollbar {
@@ -21,7 +21,7 @@
 	padding: 20px;
 	text-align: center;
 	cursor: pointer;
-	min-width: 10rem;
+	max-width: 10rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

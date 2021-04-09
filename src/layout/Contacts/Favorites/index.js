@@ -32,7 +32,7 @@ const Favorites = ({ favorites, loading }) => {
 		<>
 			{!loading && favorites.length === 0 && <Message content='No contacts found.' />}
 			<div className='slider-container'>
-				{showIcons && <Icon className='icon-class' name='caret left' size='huge' onClick={scrollLeft}></Icon>}
+				{showIcons && <Icon className='icon-class' name='caret left' color='green' size='big' onClick={scrollLeft}></Icon>}
 				{favorites.length > 0 && (
 					<div className='items-container' ref={listRef}>
 						{favorites.map((item) => (
@@ -60,7 +60,7 @@ const Favorites = ({ favorites, loading }) => {
 						))}
 					</div>
 				)}
-				{showIcons && <Icon className='icon-class' name='caret right' size='huge' onClick={scrollRight}></Icon>}
+				{showIcons && <Icon className='icon-class' name='caret right' color='green' size='big' onClick={scrollRight}></Icon>}
 
 				{loading && (
 					<>

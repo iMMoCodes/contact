@@ -11,8 +11,19 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
+}
+
+.create-contact-pencil {
+	cursor: pointer;
 }
 
 .image-wrapper {
 	display: flex;
+}
+
+.create-contact-button {
+	color: green;
+	display: flex;
+	justify-content: center;
 }

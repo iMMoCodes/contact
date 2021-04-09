@@ -17,7 +17,7 @@ export default (history) => (dispatch) => {
 		.catch((err) => {
 			dispatch({
 				type: CONTACTS_LOAD_ERROR,
-				payload: err.response.data ? err.response.data : CONNECTION_ERROR,
+				payload: err.response ? err.response.data : CONNECTION_ERROR,
 			})
 		})
 }

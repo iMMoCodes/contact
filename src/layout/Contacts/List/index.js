@@ -48,7 +48,10 @@ const ContactsListUI = ({
 									<span>
 										{
 											contact.country_code
-										}{' '}
+										}
+										{
+											'-'
+										}
 										{
 											contact.phone_number
 										}
@@ -65,6 +68,7 @@ const ContactsListUI = ({
 										<Icon name='delete' />
 									</Button>
 									<Button
+										size='tiny'
 										onClick={() => {
 											starUnstarContact(
 												contact.id,
@@ -72,9 +76,17 @@ const ContactsListUI = ({
 											)
 										}}
 									>
-										{contact.is_favorite
-											? 'UNSTAR'
-											: 'STAR'}
+										{contact.is_favorite ? (
+											<Icon
+												name='star outline'
+												color='black'
+											/>
+										) : (
+											<Icon
+												name='star'
+												color='yellow'
+											/>
+										)}
 									</Button>
 								</List.Content>
 								<List.Content

@@ -20,26 +20,21 @@ const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInva
 				when={formIsHalfFilled}
 				message={JSON.stringify({
 					header: 'Confirm Your Changes',
-					content:
-						'You have unsaved changes, still want to leave?',
+					content: 'You have unsaved changes, still want to leave?',
 				})}
 			/>
 			<Header />
 			<Grid centered>
 				<Grid.Column className='form-column'>
-					<SemanticHeader>Create Contact</SemanticHeader>
+					<SemanticHeader style={{ textAlign: 'center' }}>Create Contact</SemanticHeader>
 					<Card fluid>
 						<Card.Content>
-							<Form
-								unstackable
-							>
+							<Form unstackable>
 								<input
 									onChange={
 										onImageChange
 									}
-									ref={
-										imagePickRef
-									}
+									ref={imagePickRef}
 									type='file'
 									hidden
 								/>
@@ -71,13 +66,10 @@ const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInva
 										onClick={
 											chooseImage
 										}
+										className='create-contact-pencil'
 									/>
 								</div>
-								<Form.Group
-									widths={
-										2
-									}
-								>
+								<Form.Group widths={2}>
 									<Form.Input
 										label='First name'
 										name='firstName'
@@ -95,11 +87,7 @@ const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInva
 										placeholder='Last name'
 									/>
 								</Form.Group>
-								<Form.Group
-									widths={
-										2
-									}
-								>
+								<Form.Group widths={2}>
 									<Form.Input
 										label='Country'
 										name='countryCode'
@@ -146,14 +134,20 @@ const CreateContact = ({ onChange, onSubmit, formIsHalfFilled, loading, formInva
 										formInvalid ||
 										loading
 									}
-									onClick={
-										onSubmit
-									}
-									primary
+									onClick={onSubmit}
+									color='green'
+									style={{
+										width:
+											'60%',
+										margin:
+											'auto',
+										display:
+											'flex',
+										justifyContent:
+											'center',
+									}}
 									type='submit'
-									loading={
-										loading
-									}
+									loading={loading}
 								>
 									Submit
 								</Button>

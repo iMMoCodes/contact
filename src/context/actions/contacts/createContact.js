@@ -4,14 +4,7 @@ import { CONNECTION_ERROR } from '../../../constants/api'
 import { FIREBASE_IMAGE_REF } from '../../../constants/firebase'
 import { storage } from '../../../helpers/firebase'
 
-export default ({
-	firstName: first_name,
-	lastName: last_name,
-	phoneNumber: phone_number,
-	countryCode: country_code,
-	contactPicture: contact_picture,
-	isFavorite: is_favorite,
-}) => (dispatch) => {
+export default ({ firstName: first_name, lastName: last_name, phoneNumber: phone_number, countryCode: country_code, contactPicture: contact_picture, isFavorite: is_favorite }) => (dispatch) => {
 	const saveToBackend = (url = null) => {
 		axiosInstance()
 			.post('/contacts/', {
@@ -23,20 +16,15 @@ export default ({
 				is_favorite,
 			})
 			.then((res) => {
-				console.log(`res`, res)
-
 				dispatch({
 					type: ADD_CONTACT_SUCCESS,
 					payload: res.data,
 				})
 			})
 			.catch((err) => {
-				console.log(`err`, err)
 				dispatch({
 					type: ADD_CONTACT_ERROR,
-					payload: err.response
-						? err.response.data
-						: CONNECTION_ERROR,
+					payload: err.response ? err.response.data : CONNECTION_ERROR,
 				})
 			})
 	}
@@ -53,10 +41,7 @@ export default ({
 				(snapshot) => {},
 				async (error) => {},
 				async () => {
-					const url = await storage
-						.ref(FIREBASE_IMAGE_REF)
-						.child(contact_picture.name)
-						.getDownloadURL()
+					const url = await storage.ref(FIREBASE_IMAGE_REF).child(contact_picture.name).getDownloadURL()
 					saveToBackend(url)
 				}
 			)

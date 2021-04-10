@@ -3,6 +3,7 @@ import { Button, Container, Header, Icon, List, Message, Placeholder } from 'sem
 import APPHeader from '../../../components/Header'
 import ImageThumb from '../../../components/ImageThumb'
 import Favorites from '../Favorites'
+import './style.css'
 
 const ContactsListUI = ({
 	deleteContact,
@@ -56,16 +57,11 @@ const ContactsListUI = ({
 											contact.phone_number
 										}
 									</span>
-									<Button
-										color='red'
-										size='tiny'
-										onClick={() => {
-											deleteContact(
-												contact.id
-											)
-										}}
-									>
-										<Icon name='delete' />
+									<Button size='tiny'>
+										<Icon
+											name='chat'
+											color='blue'
+										/>
 									</Button>
 									<Button
 										size='tiny'
@@ -87,6 +83,17 @@ const ContactsListUI = ({
 												color='yellow'
 											/>
 										)}
+									</Button>
+									<Button
+										color='red'
+										size='tiny'
+										onClick={() => {
+											deleteContact(
+												contact.id
+											)
+										}}
+									>
+										<Icon name='delete' />
 									</Button>
 								</List.Content>
 								<List.Content
